@@ -1,0 +1,103 @@
+{% extends "navigation.html" %}
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{% block javascript %}
+<script type="text/javascript">
+    function count_sum(session_id, ticket_price, products_dict) {
+        let res_sum = document.getElementById(session_id + '_tickets_count').value * ticket_price;
+        for (let product of JSON.parse(products_dict)) {
+            res_sum += document.getElementById(session_id + '_' + product.id).value * product.price;
+        }
+
+        document.getElementById(session_id + '_res_sum').innerHTML = res_sum;
+    }
+
+    $(function () {
+        $('.icon-menu').click(function () {
+            $('.icon-menu + .order-products-window').toggleClass('open');
+            $('.icon-menu').toggleClass('closed');
+        });
+        $('.icon-close').click(function () {
+            $('.order-products-window').removeClass('open');
+            $('.icon-menu').removeClass('closed');
+        });
+        $('.cancel-order-button').click(function () {
+            $('.order-products-window').removeClass('open');
+            $('.icon-menu').removeClass('closed');
+        });
+        $('.submit-button').click(function () {
+            $('.order-products-window').removeClass('open');
+            $('.icon-menu').removeClass('closed');
+        });
+        window.onload = function () {
+            document.getElementById("about").classList.remove("focus");
+            document.getElementById("sessions").classList.add("focus");
+            document.getElementById("price").classList.remove("focus");
+            document.getElementById("contacts").classList.remove("focus");
+        }
+    });
+</script>
+{% endblock %}
+<div id="sessions_wind" class="page-content">
+    {% for session in sessions %}
+    <div class="session-card">
+        <p class="date">{{ session.date.strftime("%d %B (%A)") }}</p>
+        <div class="movie-card">
+            <a class="open-order" href="#{{session.id}}" title="Купить билет"></a>
+            <p class="movie-name">{{ session.movie }}</p>
+            <p class="price">{{ session.price }}</p>
+        </div>
+    </div>
+    <div id="{{session.id}}" class="pop-window">
+        {% if session.get_tickets_count() != 0 %}
+        <div class="order-window">
+            <p class="movie-name"><a class="more-info" href="{{ session.link }}" title="Больше о фильме">{{
+                session.movie }}</a></p>
+            <p class="session-date">Дата сеанса: {{ session.date.strftime("%d %B (%A)") }}</p>
+            <p></p>
+            <div class="order-actions">
+                <form class="order-form" action="/order/create/{{session.id}}" method="post">
+                    <p>Адрес электронной почты, куда отправить билеты:
+                        <input type=email name=customer_email required></p>
+                    <p>Количество билетов <input type=number id="{{session.id}}_tickets_count" name=tickets_count
+                                                 value="1"
+                                                 min="1" max="{{session.get_tickets_count()}}"
+                                                 onchange="count_sum('{{session.id}}','{{session.price}}', '{{products_dict}}')"
+                                                 required>
+                        <span style="color: firebrick">осталось: {{session.get_tickets_count()}}</span>
+                    </p>
+                    <p class="result-sum">Итого:
+                        <output style="color: firebrick; font-weight: bold; font-size: 20px"
+                                id="{{session.id}}_res_sum">{{session.price}}
+                        </output>
+                        <span style="font-size: 16px; color: firebrick">p.</span>
+                    </p>
+                    <p style="font-size: 12px; margin-top: -20px">ВНИМАНИЕ! Оплата производится перед началом сеанса</p>
+
+                    <p><input class="submit-button" type=submit value="Подтвердить заказ"></p>
+                    <div class="order-products-window">
+                        {% for product in products %}
+                        {% if product.get_count(session.id) != 0 %}
+                        <p>{{ product.description }} <span class="product-price">{{ product.price }}  р.</span>
+                            <input type=number id="{{session.id}}_{{product.id}}" name="{{product.id}}_count" value="0"
+                                   min="0" max="{{product.get_count(session.id)}}"
+                                   onchange="count_sum('{{session.id}}','{{session.price}}','{{products_dict}}')"
+                                   required></p>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </form>
+                <p><a class="cancel-order-button" href="#">Отменить</a></p>
+            </div>
+        </div>
+        {% else %}
+        <div class="sold-window">
+            <p>Извините, все билеты на данный сеанс распроданы</p>
+            <p><a class="cancel-order-button" href="#">Вернуться</a></p>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

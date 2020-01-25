@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes
+    style="background: red; color: white; height: 50px;
+     display: flex; align-items: center">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<div>
+    Редактировать:
+    <a href="/admin/products">Товары</a>
+    <a href="/admin/sessions">Сеансы</a>
+    <a href="/admin/orders">Заказы</a>
+    <a href="/admin/reservations">Бронь продуктов</a>
+</div>
+{% block content %}{% endblock %}
+</body>
+</html>

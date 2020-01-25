@@ -1,0 +1,43 @@
+{% extends "admin/admin_page.html" %}
+{% block content %}
+
+<form action="/admin/sessions/add" method="post">
+    <p><input type=text name=movie required> Movie</p>
+    <p><input type=url name=link required> Link</p>
+    <p><input type=date name=date required> Date</p>
+    <p><input type=number name=price required> Price</p>
+    <p><input type=number name=places required> Places</p>
+    <p><input type=submit value=update></p>
+</form>
+<table width="50%" border="6" cellpadding="20">
+    <thead>
+    <tr align="center" valign="center">
+        <th>Id</th>
+        <th>Movie</th>
+        <th>Link</th>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Places</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for session in sessions %}
+
+    <tr align="left" valign="center">
+        <form action="/admin/sessions/update/{{ session.id }}" method="post">
+            <td>{{ session.id }}</td>
+            <td><input type=text name=movie value="{{session.movie}}" required></td>
+            <td><input type=url name=link value="{{session.link}}" required></td>
+            <td><input type=date name=date value={{session.date}} required></td>
+            <td><input type=number name=price value={{session.price}} required></td>
+            <td><input type=number name=places value={{session.places}} required></td>
+            <td><input type=submit value=update></td>
+        </form>
+        <td><a href="/admin/sessions/delete/{{ session.id }}"> delete </a></td>
+    </tr>
+
+    {% endfor %}
+</table>
+{% endblock %}

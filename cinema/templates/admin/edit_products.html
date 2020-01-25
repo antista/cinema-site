@@ -1,0 +1,36 @@
+{% extends "admin/admin_page.html" %}
+{% block content %}
+<form action="/admin/products/add" method="post">
+    <p><input type=text name=description required> Description
+    <p><input type=number name=price required> Price
+    <p><input type=number name=count required> Count
+    <p><input type=submit value=create>
+</form>
+<table width="50%" border="6" cellpadding="20">
+    <thead>
+    <tr align="center" valign="center">
+        <th>Id</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Count</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+
+    <tr align="left" valign="center">
+        <form action="/admin/products/update/{{ product.id }}" method="post">
+            <td>{{ product.id }}</td>
+            <td><input type=text name=description value="{{product.description}}" required></td>
+            <td><input type=number name=price value={{product.price}} required></td>
+            <td><input type=number name=count value={{product.count}} required></td>
+            <td><input type=submit value=update></td>
+        </form>
+        <td><a href="/admin/products/delete/{{ product.id }}"> delete </a></td>
+    </tr>
+
+    {% endfor %}
+</table>
+{% endblock %}

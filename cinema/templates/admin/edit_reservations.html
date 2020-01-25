@@ -1,0 +1,23 @@
+{% extends "admin/admin_page.html" %}
+{% block content %}
+<table style="margin-top: 120px" width="50%" border="6" cellpadding="20">
+    <thead>
+    <tr align="center" valign="center">
+        <th>Order id</th>
+        <th>Product id</th>
+        <th>Count</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for reservation in reservations %}
+    {% if reservation.count > 0 %}
+    <tr align="left" valign="center">
+        <td>{{ reservation.order_id[:6] }}</td>
+        <td>{{ reservation.product_id }}</td>
+        <td>{{ reservation.count }}</td>
+    </tr>
+    {% endif %}
+
+    {% endfor %}
+</table>
+{% endblock %}

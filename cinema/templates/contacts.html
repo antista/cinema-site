@@ -1,0 +1,20 @@
+{% extends "navigation.html" %}
+{% block content %}
+
+{% block javascript %}
+<script type="text/javascript">
+    window.onload = function () {
+        document.getElementById("about").classList.remove("focus");
+        document.getElementById("sessions").classList.remove("focus");
+        document.getElementById("price").classList.remove("focus");
+        document.getElementById("contacts").classList.add("focus");
+    };
+</script>
+{% endblock %}
+<div id="contacts" class="page-content">
+    <p>Контактный телефон: <span class="phone">89221234455</span></p>
+    <p>Мы находимся по адресу: <a href="https://goo.gl/maps/xbVRVYwPagwjrMGA9">ул. 8 Марта, 37а</a></p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2182.956730396034!2d60.60107001597665!3d56.82953158085505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c16ef2a16b8231%3A0xefe37183c7d1e676!2z0JTQtdC90LTRgNC-0LvQvtCz0LjRh9C10YHQutC40Lkg0L_QsNGA0Lot0LLRi9GB0YLQsNCy0LrQsA!5e0!3m2!1sru!2sru!4v1577626338592!5m2!1sru!2sru"
+            allowfullscreen=""></iframe>
+</div>
+{% endblock %}

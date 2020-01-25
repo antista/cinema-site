@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Кинотеатр Галактика</title>
+    <link rel="stylesheet" type="text/css" href="static/styles/index.css">
+    <link rel="shortcut icon" href="static/styles/images/favicon.ico">
+</head>
+<body>
+
+<article class="header">
+    <img src="static/styles/images/logo.png">
+    <p>под открытым небом</p>
+    <div><a href="/sessions">Купить билет</a></div>
+</article>
+<div class="navigation">
+    <a href="/about" id="about">О нас</a>
+    <a href="/sessions" id="sessions">Сеансы</a>
+    <a href="/price" id="price">Дополнительно</a>
+    <a href="/contacts" id="contacts">Контакты</a>
+</div>
+<div class="page">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

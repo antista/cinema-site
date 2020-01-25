@@ -1,0 +1,25 @@
+{% extends "navigation.html" %}
+{% block content %}
+{% block javascript %}
+<script type="text/javascript">
+    window.onload = function () {
+        document.getElementById("about").classList.remove("focus");
+        document.getElementById("sessions").classList.remove("focus");
+        document.getElementById("price").classList.add("focus");
+        document.getElementById("contacts").classList.remove("focus");
+    };
+</script>
+{% endblock %}
+<div id="price" class="page-content">
+    <p>Для более комфортного кинопросмотра в аренду можно взять:</p>
+    <ul>
+        {% for product in products %}
+        <li>{{ product.description }} <span class="product-price">{{ product.price }}  р.</span></li>
+        {% endfor %}
+    </ul>
+    <p>Также можно бесплатно расположиться на лавочках или взять специальные подстилки, если хотите расположиться ближе
+        к экрану на землю.</p>
+    <img src="static/styles/images/place/place6.jpg" alt="photo6">
+</div>
+
+{% endblock %}

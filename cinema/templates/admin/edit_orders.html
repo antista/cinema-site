@@ -1,0 +1,27 @@
+{% extends "admin/admin_page.html" %}
+{% block content %}
+<table style="margin-top: 120px" width="50%" border="6" cellpadding="20">
+    <thead>
+    <tr align="center" valign="center">
+        <th>Id</th>
+        <th>Session id</th>
+        <th>Customer email</th>
+        <th>Tickets count</th>
+        <th>To pay</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for order in orders %}
+
+    <tr align="left" valign="center">
+        <td>{{ order.id }}</td>
+        <td>{{ order.session_id[:6]}}</td>
+        <td>{{order.customer_email}}</td>
+        <td>{{order.tickets_count}}</td>
+        <td>{{order.get_res_sum()}} рублей</td>
+        <td><a href="/admin/orders/delete/{{ order.id }}"> delete </a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

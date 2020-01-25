@@ -1,0 +1,6 @@
+sqlalchemy
+flask
+py-postgresql
+flask_sqlalchemy
+flake8
+psycopg2

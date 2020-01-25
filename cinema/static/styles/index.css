@@ -1,0 +1,404 @@
+html {
+    background: url("images/stars_texture.jpg");
+}
+
+body {
+    font-family: sans-serif;
+    width: 100vw;
+    max-width: 1024px;
+    background: #fffdfa;
+    margin: auto;
+    cursor: default;
+}
+
+.header {
+    background: url("images/stars_texture.jpg");
+    height: 180px;
+    top: 0;
+    position: absolute;
+    width: 100vw;
+    max-width: 1024px;
+    color: #fffdfa;
+    margin-top: 0;
+    z-index: 1;
+}
+
+.header img {
+    padding: 40px 40px 0;
+    width: 300px;
+}
+
+.header p {
+    padding-left: 92px;
+    margin-top: -5px;
+    font-size: 20px;
+}
+
+.header div a {
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: center;
+    line-height: 60px;
+    width: 200px;
+    height: 60px;
+    color: black;
+    background: thistle;
+}
+
+.header div a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+}
+
+.navigation {
+    position: sticky;
+    top: 0;
+    background: black;
+    width: 100vw;
+    max-width: 1024px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    margin: 180px 0 55px 0;
+    z-index: 2;
+}
+
+.navigation a {
+    text-decoration: none;
+    text-align: center;
+    vertical-align: center;
+    line-height: 40px;
+    width: 200px;
+    height: 40px;
+    color: #fffdfa;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+    color: black;
+    background: #fffdfa;
+    font-weight: bold;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+}
+
+.navigation a:after {
+    content: "";
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 14px;
+    width: 5px;
+    height: 5px;
+    border-right: 3px solid #fffdfa;
+    border-bottom: 3px solid #fffdfa;
+    transform: rotate(45deg);
+    z-index: 3;
+}
+
+.page {
+    background: #fffdfa;
+    content: '';
+    position: relative;
+    margin: -60px auto 0;
+    width: calc(100vw);
+    max-width: 1024px;
+    min-height: calc(100vh - 80px);
+}
+
+.page-content {
+    border: 70px white solid;
+    background: #fffdfa;
+    position: absolute;
+    padding-top: 275px;
+    margin-top: -275px;
+    -webkit-background-clip: content-box;
+    background-clip: content-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 17px;
+    line-height: 25px;
+    text-align: justify;
+}
+
+
+.page-content h2 {
+    margin: 0 -25px 35px -25px;
+    font-size: 28px;
+    line-height: 30px;
+}
+
+.page-content img {
+    margin: 15px auto;
+    width: calc(100vw - 30%);
+    max-width: 800px;
+}
+
+iframe {
+    border: 0;
+    width: calc(100vw - 140px);
+    max-width: 860px;
+    height: calc(100vw - 240px);
+    max-height: 600px;
+}
+
+#sessions_wind {
+    justify-content: space-between;
+    flex-flow: row wrap;
+}
+
+.session-card {
+    width: 350px;
+    height: 200px;
+    margin: 0 45px 45px 0;
+}
+
+.movie-card {
+    position: relative;
+    width: 350px;
+    height: 150px;
+    border: rgb(230, 230, 230) 4px solid;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    box-sizing: content-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .8);
+}
+
+.open-order {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    z-index: 2;
+}
+
+.date {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.movie-name {
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 27px;
+    text-align: center;
+}
+
+.more-info {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.more-info:hover {
+    text-decoration: underline;
+}
+
+.session-date {
+    font-size: 18px;
+    text-align: center;
+    margin-top: -15px;
+}
+
+.price {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 10px 0 0;
+    text-align: center;
+    width: 80px;
+    line-height: 50px;
+    height: 50px;
+    background: black;
+    color: #fffdfa;
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.price:after {
+    content: " р.";
+}
+
+.pop-window {
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    visibility: hidden;
+}
+
+.order-window {
+    padding-top: 20px;
+    position: fixed;
+    top: 160px;
+    left: calc(100vw / 2 - 450px);
+    border: 3px rebeccapurple solid;
+    border-right: none;
+    width: 612px;
+    height: 400px;
+    background: #fffdfa;
+    z-index: 4;
+    visibility: inherit;
+    font-size: 15px;
+}
+
+.pop-window:target {
+    visibility: visible;
+}
+
+
+.order-form {
+    margin-top: 55px;
+    margin-left: 45px;
+    position: relative;
+}
+
+.submit-button {
+    background: -moz-linear-gradient(#D0ECF4, #5BC9E1, #D0ECF4);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #5BC9E1));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+    padding: 3px 7px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 10px;
+    border: 1px solid #666;
+    font-size: 20px;
+    position: absolute;
+    bottom: -72px;
+    left: 110px;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: -moz-linear-gradient(#5BC9E1, #D0ECF4, #5BC9E1);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#5BC9E1), to(#5BC9E1), color-stop(0.5, #D0ECF4));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EBFFFF', endColorstr='#00BBD6');
+}
+
+.submit-button:active {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    border-radius: 10px;
+}
+
+.cancel-order-button {
+    position: absolute;
+    bottom: 29px;
+    right: 173px;
+    color: black;
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.cancel-order-button:hover {
+    text-decoration: underline;
+}
+
+.cancel-order-button:active {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    border-radius: 10px;
+}
+
+.order-products-window {
+    padding-top: 20px;
+    position: fixed;
+    top: 160px;
+    left: calc(100vw / 2 - 490px + 650px);
+    border: 3px rebeccapurple solid;
+    border-left: 3px rebeccapurple dashed;
+    width: 250px;
+    height: 400px;
+    background: #fffdfa;
+    z-index: 4;
+    font-size: 15px;
+    padding-left: 15px;
+    text-align: left;
+}
+
+.product-price {
+    color: firebrick;
+}
+
+.result-sum {
+    padding-top: 15px;
+    font-size: 18px;
+    padding-right: 15px;
+}
+
+.finished-order {
+    margin-top: 120px;
+    height: 400px;
+    line-height: 50px;
+    background: #fffdfa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.return-button {
+    background: -moz-linear-gradient(#D0ECF4, #5BC9E1, #D0ECF4);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #5BC9E1));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+    padding: 3px 7px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 10px;
+    border: 1px solid #666;
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+}
+
+.sold-window {
+    padding: 20px;
+    position: fixed;
+    top: 260px;
+    left: calc(100vw / 2 - 250px);
+    border: 3px rebeccapurple solid;
+    width: 400px;
+    height: 200px;
+    background: #fffdfa;
+    z-index: 4;
+    visibility: inherit;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sold-window p {
+    padding-top: 40px;
+    color: firebrick;
+}
+
+.sold-window .cancel-order-button {
+    left: 150px;
+}
+
+.focus {
+    color: black !important;
+    background: thistle;
+    font-weight: bold;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .9);
+}
+
+.focus:after {
+    visibility: hidden;
+}

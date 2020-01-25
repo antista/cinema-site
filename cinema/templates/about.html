@@ -1,0 +1,27 @@
+{% extends "navigation.html" %}
+{% block content %}
+{% block javascript %}
+<script type="text/javascript">
+    window.onload = function () {
+        document.getElementById("about").classList.add("focus");
+        document.getElementById("sessions").classList.remove("focus");
+        document.getElementById("price").classList.remove("focus");
+        document.getElementById("contacts").classList.remove("focus");
+    };
+</script>
+{% endblock %}
+<div id="about" class="page-content">
+    <h2>Киноплощадка для просмотра фильмов на открытом водухе "Галактика".</h2>
+    <p>Недавно в парке заработала наша площадка для кинопросмотров: в теплую погоду фильмы демонстрируют на
+        площадке в центральной части общественного пространства. Рядом
+        с основной сценой работает кафе (в продаже выпечка и напитки).</p>
+    <img src="static/styles/images/place/place0.jpg" alt="photo1">
+    <p>Что касается репертуара, то кроме голливудских блокбастеров здесь можно посмотреть и артхаус. Сеансы
+        проводятся каждый вечер в 20:00 при наличии хорошей погоды.</p>
+    <p>Билет на сеанс можно приобрести на нашем сайте или по телефону.</p>
+    <img src="static/styles/images/place/place1.jpg" alt="photo2">
+    <img src="static/styles/images/place/place2.jpg" alt="photo3">
+    <img src="static/styles/images/place/place3.jpg" alt="photo4">
+    <img src="static/styles/images/place/place4.jpg" alt="photo5">
+</div>
+{% endblock %}
