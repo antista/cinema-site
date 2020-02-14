@@ -12,7 +12,7 @@
 
 ### Использованные технологии
 * Python3.7
-* Flask
+* Flask (REST API)
 * Postgres
 * SQLAlchemy
 * Jinja2
